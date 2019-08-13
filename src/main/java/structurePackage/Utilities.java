@@ -1,8 +1,10 @@
 package structurePackage;
 
+import com.practice.splitwise.Person;
+
 public class Utilities {
 	public static void addExpense(Person person, Group group, Expense expense){
-		person.addExpense(group, expense);
+//		person.addExpense(group, expense);
 	}
 
 	public static void printError(String s) {

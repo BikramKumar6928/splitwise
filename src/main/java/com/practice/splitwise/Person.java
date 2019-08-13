@@ -1,4 +1,4 @@
-package structurePackage;
+package com.practice.splitwise;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,15 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+@Entity
 public class Person {
 
-	private static Long counter=0L;
-	private Long id;
+	private static long counter=0L;
+	@Id
+	private long id;
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private List<Expense> expenseList;
-	private List<Group> groupList;
+//	private List<Expense> expenseList;
+//	private List<Group> groupList;
 	private String userName;
 	private String password;
 
@@ -28,10 +30,13 @@ public class Person {
 		this.password = password;
 		this.id = counter;
 
-		groupList = new ArrayList<>();
-		expenseList = new ArrayList<>();
+//		groupList = new ArrayList<>();
+//		expenseList = new ArrayList<>();
 
 		counter++;
+	}
+
+	public Person() {
 	}
 
 	public void setName(String firstName, String lastName){
@@ -53,29 +58,29 @@ public class Person {
 
 
 
-	public void addExpense(Group group, Expense expense){
-		if(!checkGroupPresent(group)) {
-			Utilities.printError(String.format("Group %s not present in %s", group, this));
-			return;
-		}
-		addToExpenseList(expense);
-	}
+//	public void addExpense(Group group, Expense expense){
+//		if(!checkGroupPresent(group)) {
+//			Utilities.printError(String.format("Group %s not present in %s", group, this));
+//			return;
+//		}
+//		addToExpenseList(expense);
+//	}
 
-	private void addToExpenseList(Expense expense) {
-		expenseList.add(expense);
-	}
-
-	private boolean checkGroupPresent(Group group){
-		Stream<Group> groupStream= groupList.stream();
-		Group g = groupStream.filter((groupListItem) -> {
-			if (groupListItem == group)
-				return true;
-			return false;
-		})
-				.findAny()
-				.orElse(null);
-		return g != null;
-	}
+//	private void addToExpenseList(Expense expense) {
+//		expenseList.add(expense);
+//	}
+//
+//	private boolean checkGroupPresent(Group group){
+//		Stream<Group> groupStream= groupList.stream();
+//		Group g = groupStream.filter((groupListItem) -> {
+//			if (groupListItem == group)
+//				return true;
+//			return false;
+//		})
+//				.findAny()
+//				.orElse(null);
+//		return g != null;
+//	}
 
 
 	public String getFirstName() {

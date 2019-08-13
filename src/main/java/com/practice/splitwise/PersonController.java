@@ -2,7 +2,6 @@ package com.practice.splitwise;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import structurePackage.Person;
 
 import java.util.List;
 
