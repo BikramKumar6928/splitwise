@@ -8,7 +8,8 @@ import java.util.stream.Stream;
 
 public class Person {
 
-	private static Long id=0L;
+	private static Long counter=0L;
+	private Long id;
 	private String firstName;
 	private String middleName;
 	private String lastName;
@@ -25,11 +26,12 @@ public class Person {
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
+		this.id = counter;
 
 		groupList = new ArrayList<>();
 		expenseList = new ArrayList<>();
 
-		id++;
+		counter++;
 	}
 
 	public void setName(String firstName, String lastName){
@@ -75,15 +77,6 @@ public class Person {
 		return g != null;
 	}
 
-	public static Long getId() {
-		return id;
-	}
-
-	public static void setId(Long id) {
-		Person.id = id;
-	}
-
-
 
 	public String getFirstName() {
 		return firstName;
@@ -125,5 +118,11 @@ public class Person {
 		this.password = password;
 	}
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

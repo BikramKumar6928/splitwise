@@ -7,6 +7,7 @@ import structurePackage.Person;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
@@ -30,13 +31,28 @@ public class PersonService {
 		}).findFirst().orElse(null);
 	}
 
-	public void insertPerson(Person person){
+	public Long insertPerson(Person person){
 //		personRepository.save(person);
-
 		personList.add(person);
+		return person.getId();
 	}
 
 
+	public void updatePerson(String stringId, Person person) {
+		Long id = Long.parseLong(stringId);
+		for(int i=0;i<personList.size();i++){
+			if(personList.get(i).getId() == id){
+				personList.set(i,person);
+				break;
+			}
+		}
+	}
 
 
+	public void deletePerson(String stringId) {
+		Long id = Long.parseLong(stringId);
+		personList = personList.stream().filter(item ->{
+			return item.getId() != id;
+		}).collect(Collectors.toList());
+	}
 }
