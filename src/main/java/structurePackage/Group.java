@@ -10,8 +10,12 @@ public abstract class Group {
 		this.groupName = groupName;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return groupName;
 	}
+
+
 }

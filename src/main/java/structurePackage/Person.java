@@ -6,10 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-@Entity
 public class Person {
 
-	@Id
 	private static Long id=0L;
 	private String firstName;
 	private String middleName;
@@ -35,7 +33,7 @@ public class Person {
 	}
 
 	public void setName(String firstName, String lastName){
-		setName(firstName,"",lastName);
+		 setName(firstName,"",lastName);
 	}
 
 	public void setName(String firstName, String middleName, String lastName){
@@ -85,8 +83,47 @@ public class Person {
 		Person.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return getName();
+
+
+	public String getFirstName() {
+		return firstName;
 	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 }
