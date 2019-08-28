@@ -2,13 +2,19 @@ package structurePackage;
 
 import com.practice.splitwise.Person;
 
-import java.util.Date;
-import java.util.Map;
+import java.util.Calendar;
+import java.util.List;
 
 public class Expense {
-	private Date date;
-	private double amount;
-	private Group group;
-	private Map<Person,Double> spenderList;
-	private Map<Person,Double> recieverList;
+	private Calendar date;
+	private Amount amount;
+	private List<Spender> spenderList;
+	private List<Spender> beneficiaryList;
+	private List<SubExpense> subExpenseList;
+	private Person addedBy;
+	private Category category;
+	private List<Receipt> receiptList;
+
+
+
 }

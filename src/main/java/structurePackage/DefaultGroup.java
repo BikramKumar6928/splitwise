@@ -1,7 +1,17 @@
 package structurePackage;
 
-public class DefaultGroup extends Group{
+public class DefaultGroup implements Group{
 	public DefaultGroup(){
-		super("Default Group");
+		setGroupName("Default Group");
+	}
+
+	@Override
+	public void addExpense(Expense expense) {
+
+	}
+
+	@Override
+	public void setGroupName(String name) {
+
 	}
 }

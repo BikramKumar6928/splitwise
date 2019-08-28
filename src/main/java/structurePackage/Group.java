@@ -1,21 +1,14 @@
 package structurePackage;
 
+import com.practice.splitwise.Person;
+
 import java.util.List;
 
-public abstract class Group {
-	private List<Expense> members;
-	private String groupName;
-
-	public Group(String groupName) {
-		this.groupName = groupName;
-	}
+public interface Group {
 
 
-
-	@Override
-	public String toString() {
-		return groupName;
-	}
-
+	void addExpense(Expense expense);
+	void setGroupName(String name);
+	void mergeGroup(Group group);
 
 }
