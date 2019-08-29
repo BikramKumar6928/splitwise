@@ -1,6 +1,4 @@
-package structurePackage;
-
-import com.practice.splitwise.Person;
+package com.practice.splitwise.structurePackage;
 
 import java.util.Calendar;
 import java.util.List;

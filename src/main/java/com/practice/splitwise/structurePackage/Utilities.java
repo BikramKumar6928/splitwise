@@ -1,6 +1,4 @@
-package structurePackage;
-
-import com.practice.splitwise.Person;
+package com.practice.splitwise.structurePackage;
 
 public class Utilities {
 	public static void addExpense(Person person, Group group, Expense expense){

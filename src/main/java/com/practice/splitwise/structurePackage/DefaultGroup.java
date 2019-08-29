@@ -1,4 +1,4 @@
-package structurePackage;
+package com.practice.splitwise.structurePackage;
 
 public class DefaultGroup implements Group{
 	public DefaultGroup(){

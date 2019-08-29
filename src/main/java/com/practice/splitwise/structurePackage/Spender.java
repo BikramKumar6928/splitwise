@@ -1,6 +1,4 @@
-package structurePackage;
-
-import com.practice.splitwise.Person;
+package com.practice.splitwise.structurePackage;
 
 public class Spender {
 	private Person person;

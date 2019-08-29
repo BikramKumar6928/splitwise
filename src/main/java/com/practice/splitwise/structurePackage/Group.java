@@ -1,8 +1,4 @@
-package structurePackage;
-
-import com.practice.splitwise.Person;
-
-import java.util.List;
+package com.practice.splitwise.structurePackage;
 
 public interface Group {
 

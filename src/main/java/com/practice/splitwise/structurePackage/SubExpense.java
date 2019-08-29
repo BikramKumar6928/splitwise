@@ -1,4 +1,4 @@
-package structurePackage;
+package com.practice.splitwise.structurePackage;
 
 import java.util.List;
 

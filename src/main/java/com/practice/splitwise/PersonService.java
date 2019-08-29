@@ -1,5 +1,6 @@
 package com.practice.splitwise;
 
+import com.practice.splitwise.structurePackage.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

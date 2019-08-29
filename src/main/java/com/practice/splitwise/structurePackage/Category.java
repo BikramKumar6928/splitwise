@@ -1,4 +1,4 @@
-package structurePackage;
+package com.practice.splitwise.structurePackage;
 
 public enum Category {
 	FOOD("Food","food"),

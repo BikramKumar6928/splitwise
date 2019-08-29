@@ -1,4 +1,4 @@
-package com.practice.splitwise;
+package com.practice.splitwise.structurePackage;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
