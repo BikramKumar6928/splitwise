@@ -1,17 +1,24 @@
-package com.practice.splitwise;
+package com.practice.splitwise.services;
 
-import com.practice.splitwise.structurePackage.Person;
+import com.practice.splitwise.beans.Person;
+import com.practice.splitwise.exceptions.PersonNotFoundException;
+import com.practice.splitwise.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PersonService {
+	private PersonRepository personRepository;
 
 	@Autowired
-	private PersonRepository personRepository;
+	public PersonService(PersonRepository personRepository){
+		this.personRepository = personRepository;
+	}
+
 
 //	private List<Person> personList = new ArrayList<>(Arrays.asList(
 //			new Person("Bikram","","Kumar","bikram","qwerty"),
@@ -28,9 +35,8 @@ public class PersonService {
 
 	}
 
-	public Person getPersonById(String stringId){
-		Long id = Long.parseLong(stringId);
-		return personRepository.findById(id).orElse(null);
+	public Person getPersonById(UUID id){
+		return personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException("Person does not have an account"));
 	}
 
 	public Long insertPerson(Person person){
@@ -45,7 +51,7 @@ public class PersonService {
 
 
 	public void deletePerson(String stringId) {
-		long id = Long.parseLong(stringId);
+		UUID id = UUID.fromString(stringId);
 		personRepository.deleteById(id);
 	}
 }

@@ -1,6 +1,8 @@
-package com.practice.splitwise.structurePackage;
+package com.practice.splitwise.beans.enums;
 
-public enum Category {
+import java.io.Serializable;
+
+public enum Category  implements Serializable {
 	FOOD("Food","food"),
 	TRAVEL("Travel","travel"),
 	HOUSE("House","house"),

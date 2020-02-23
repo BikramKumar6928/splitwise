@@ -1,22 +1,21 @@
-package com.practice.splitwise.structurePackage;
+package com.practice.splitwise.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
+import java.io.Serializable;
 
 @Entity
-public class Person {
+public class Person implements Serializable {
 
 	private static long counter=0L;
 	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id;
 	private String firstName;
 	private String middleName;
 	private String lastName;
-//	private List<Expense> expenseList;
-//	private List<Group> groupList;
 	private String userName;
 	private String password;
 
@@ -50,7 +49,7 @@ public class Person {
 	}
 
 	public String getName(){
-		if(middleName == "")
+		if("".equals(middleName))
 			return String.format("%s %s",firstName,lastName);
 
 		return String.format("%s %s %s",firstName,middleName,lastName);

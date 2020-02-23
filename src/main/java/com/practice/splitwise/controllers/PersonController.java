@@ -1,10 +1,12 @@
-package com.practice.splitwise;
+package com.practice.splitwise.controllers;
 
-import com.practice.splitwise.structurePackage.Person;
+import com.practice.splitwise.services.PersonService;
+import com.practice.splitwise.beans.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class PersonController {
@@ -18,7 +20,7 @@ public class PersonController {
 	}
 
 	@RequestMapping("/persons/{id}")
-	public Person getPersonById(@PathVariable("id") String id){
+	public Person getPersonById(@PathVariable("id") UUID id){
 		return personService.getPersonById(id);
 	}
 
