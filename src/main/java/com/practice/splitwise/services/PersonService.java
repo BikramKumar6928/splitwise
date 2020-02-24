@@ -36,17 +36,17 @@ public class PersonService {
 	}
 
 	public Person getPersonById(UUID id){
-		return personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException("Person does not have an account"));
+		return personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
 	}
 
-	public Long insertPerson(Person person){
+	public UUID insertPerson(Person person){
 		return personRepository.save(person).getId();
 	}
 
 
-	public void updatePerson(String stringId, Person person) {
-		person.setId(Long.parseLong(stringId));
-		personRepository.save(person);
+	public Person updatePerson(String stringId, Person person) {
+		person.setId(UUID.fromString(stringId));
+		return personRepository.save(person);
 	}
 
 

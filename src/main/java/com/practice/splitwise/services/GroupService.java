@@ -3,6 +3,7 @@ package com.practice.splitwise.services;
 import com.practice.splitwise.beans.Expense;
 import com.practice.splitwise.beans.Person;
 import com.practice.splitwise.beans.Group;
+import com.practice.splitwise.exceptions.GroupNotFoundException;
 import com.practice.splitwise.repositories.GroupRepository;
 import com.practice.splitwise.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class GroupService {
     }
 
     public Group getGroupById(UUID id) {
-        return groupRepository.findById(id).orElse(null);
+        return groupRepository.findById(id).orElseThrow(GroupNotFoundException::new);
     }
 
     public void updateGroup(UUID id, Group group) {
@@ -64,11 +65,11 @@ public class GroupService {
         groupRepository.save(group);
     }
 
-    public Long addExpense(UUID groupId, Expense expense){
+    public UUID addExpense(UUID groupId, Expense expense){
         Group group = getGroupById(groupId);
-        Long expenseId = group.addExpense(expense);
+        group.addExpense(expense);
         Group savedGroup = groupRepository.save(group);
-        return expenseId;
+        return expense.getId();
     }
 
     public List<Expense> getExpenseList(UUID groupId){
