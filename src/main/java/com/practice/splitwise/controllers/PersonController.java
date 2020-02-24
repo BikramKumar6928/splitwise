@@ -9,32 +9,33 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/persons")
 public class PersonController {
 
 	@Autowired
 	private PersonService personService;
 
-	@RequestMapping("/persons")
+	@GetMapping
 	public List<Person> getPersons(){
 		return personService.getAllPersons();
 	}
 
-	@RequestMapping("/persons/{id}")
+	@GetMapping("/{id}")
 	public Person getPersonById(@PathVariable("id") UUID id){
 		return personService.getPersonById(id);
 	}
 
-	@RequestMapping(method = RequestMethod.POST,value = "/persons")
-	public Long insertPerson(@RequestBody Person person){
+	@PostMapping
+	public UUID insertPerson(@RequestBody Person person){
 		return personService.insertPerson(person);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT,value = "/persons/{id}")
-	public void updatePerson(@PathVariable String id, @RequestBody Person person){
-		personService.updatePerson(id,person);
+	@PutMapping("/{id}")
+	public Person updatePerson(@PathVariable String id, @RequestBody Person person){
+		return personService.updatePerson(id,person);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE,value = "/persons/{id}")
+	@DeleteMapping("/{id}")
 	public void deletePerson(@PathVariable String id){
 		personService.deletePerson(id);
 	}
