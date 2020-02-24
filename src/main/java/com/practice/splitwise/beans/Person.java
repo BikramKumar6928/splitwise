@@ -5,14 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 public class Person implements Serializable {
 
-	private static long counter=0L;
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private long id;
+	private UUID id;
 	private String firstName;
 	private String middleName;
 	private String lastName;
@@ -27,12 +27,6 @@ public class Person implements Serializable {
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
-		this.id = counter;
-
-//		groupList = new ArrayList<>();
-//		expenseList = new ArrayList<>();
-
-		counter++;
 	}
 
 	public Person() {
@@ -54,32 +48,6 @@ public class Person implements Serializable {
 
 		return String.format("%s %s %s",firstName,middleName,lastName);
 	}
-
-
-
-//	public void addExpense(Group group, Expense expense){
-//		if(!checkGroupPresent(group)) {
-//			Utilities.printError(String.format("Group %s not present in %s", group, this));
-//			return;
-//		}
-//		addToExpenseList(expense);
-//	}
-
-//	private void addToExpenseList(Expense expense) {
-//		expenseList.add(expense);
-//	}
-//
-//	private boolean checkGroupPresent(Group group){
-//		Stream<Group> groupStream= groupList.stream();
-//		Group g = groupStream.filter((groupListItem) -> {
-//			if (groupListItem == group)
-//				return true;
-//			return false;
-//		})
-//				.findAny()
-//				.orElse(null);
-//		return g != null;
-//	}
 
 
 	public String getFirstName() {
@@ -122,11 +90,11 @@ public class Person implements Serializable {
 		this.password = password;
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 }

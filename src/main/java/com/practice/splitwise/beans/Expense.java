@@ -141,4 +141,11 @@ public class Expense implements Serializable {
 		receiptList.add(receipt);
 	}
 
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
 }

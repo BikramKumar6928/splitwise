@@ -3,6 +3,7 @@ package com.practice.splitwise.beans;
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="GroupTable")
@@ -12,6 +13,7 @@ public class Group {
 	private UUID id;
 
 	private String name;
+
 	@OneToMany
 	private List<Expense> expenseList;
 	@OneToMany
@@ -19,27 +21,28 @@ public class Group {
 
 
 	public void setName(String name) {
-
+		this.name = name;
 	}
 
 	public String getName() {
-		return null;
+		return name;
 	}
 
-	public Long addExpense(Expense expense) {
-		return 0L;
+	public void addExpense(Expense expense) {
+		expenseList.add(expense);
 	}
 
 	public List<Expense> getExpenseList() {
-		return null;
+		return expenseList;
 	}
 
 	public void mergeGroup(Group group) {
-
+		expenseList.addAll(group.getExpenseList());
+		personList.addAll(group.getMembers());
 	}
 
 	public List<Person> getMembers() {
-		return null;
+		return personList;
 	}
 
 	public UUID getId() {
@@ -51,10 +54,12 @@ public class Group {
 	}
 
 	public void removeMembers(Person person) {
-
+		personList = personList.parallelStream()
+				.filter(personOfList-> personOfList.getId() != person.getId())
+				.collect(Collectors.toList());
 	}
 
 	public void addMembers(Person person) {
-
+		personList.add(person);
 	}
 }
