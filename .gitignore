@@ -5,6 +5,7 @@ target/
 !**/src/test/**
 derby.log
 *.patch
+.fuse*
 
 ### STS ###
 .apt_generated

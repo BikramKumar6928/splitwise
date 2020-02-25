@@ -18,10 +18,12 @@ public class Expense implements Serializable {
 	private UUID id;
 
 	private Date date;
-	private Person addedBy;
 	private Category category;
 	private boolean isUpdated = false;
 	private Amount amount;
+
+	@OneToOne(targetEntity = Person.class)
+	private Person addedBy;
 
 	@OneToMany(targetEntity=Expense.class)
 	private List<Expense> subExpenses;
