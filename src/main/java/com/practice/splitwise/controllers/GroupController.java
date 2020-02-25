@@ -1,6 +1,8 @@
 package com.practice.splitwise.controllers;
 
+import com.practice.splitwise.beans.Expense;
 import com.practice.splitwise.beans.Group;
+import com.practice.splitwise.beans.Person;
 import com.practice.splitwise.services.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +32,8 @@ public class GroupController {
     }
 
     @PutMapping("/{id}")
-    public void updateGroup(@PathVariable UUID id, @RequestBody Group group){
-        groupService.updateGroup(id, group);
+    public Group updateGroup(@PathVariable UUID id, @RequestBody Group group){
+        return groupService.updateGroup(id, group);
     }
 
     @DeleteMapping("/{id}")
@@ -39,8 +41,15 @@ public class GroupController {
         groupService.deleteGroup(id);
     }
 
-    @PostMapping("/{groupId}/person/{personId}")
-    public void addPersonToGroup(@PathVariable UUID groupId, @PathVariable UUID personId){
-        groupService.addPersonToGroup(groupId,personId);
+    @PostMapping("/{groupId}/persons/{personId}")
+    public Group addPersonToGroup(@PathVariable UUID groupId, @PathVariable UUID personId){
+        return groupService.addPersonToGroup(groupId,personId);
     }
+
+    @PostMapping("/{groupId}/expenses/{expenseId}")
+    public Group addExpenseToGroup(@PathVariable UUID groupId, @PathVariable UUID expenseId){
+        return groupService.addExpenseToGroup(groupId, expenseId);
+    }
+
+
 }

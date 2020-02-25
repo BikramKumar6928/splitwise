@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Entity
 public class Receipt  implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private UUID id;
@@ -31,4 +32,13 @@ public class Receipt  implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
 }

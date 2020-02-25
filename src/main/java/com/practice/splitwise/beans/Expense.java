@@ -43,7 +43,7 @@ public class Expense implements Serializable {
 		this(new Date(),addedBy,category, Arrays.asList(subExpenses));
 	}
 
-
+	public Expense(){}
 
 	public Expense (Date date, Person addedBy, Category category, List<Expense> subExpenses){
 		this.date = date;

@@ -1,0 +1,507 @@
+{
+	"info": {
+		"_postman_id": "d152868f-b5ba-4bbf-9243-6ec78ab5ecd4",
+		"name": "Splitwise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Person",
+					"item": [
+						{
+							"name": "Expense",
+							"item": [
+								{
+									"name": "Get Expense",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{ip}}:{{port}}/persons/{{personId}}/expenses",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{ip}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"persons",
+												"{{personId}}",
+												"expenses"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Insert Expense",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "be7c66f3-a848-4c13-b8bd-7d3606293d8a",
+												"exec": [
+													"let response = JSON.parse(responseBody);",
+													"pm.environment.set(\"expenseId\",response);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\":{\n    \t\"amount\": 20.3\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{ip}}:{{port}}/persons/{{personId}}/expenses",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{ip}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"persons",
+												"{{personId}}",
+												"expenses"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Expense by ID",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{ip}}:{{port}}/persons/{{personId}}/expenses/{{expenseId}}",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{ip}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"persons",
+												"{{personId}}",
+												"expenses",
+												"{{expenseId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Expense",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"firstName\": \"Bikram\",\n\t\"middleName\": \"Singh\",\n\t\"lastName\": \"Kumar\",\n\t\"userName\": \"bikramk\",\n\t\"password\": \"asd\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{protocol}}://{{ip}}:{{port}}/persons/{{personId}}/expenses/{{expenseId}}",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{ip}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"persons",
+												"{{personId}}",
+												"expenses",
+												"{{expenseId}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Expense",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{protocol}}://{{ip}}:{{port}}/persons/{{personId}}/expenses/{{expenseId}}",
+											"protocol": "{{protocol}}",
+											"host": [
+												"{{ip}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"persons",
+												"{{personId}}",
+												"expenses",
+												"{{expenseId}}"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get Persons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/persons",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"persons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insert Person",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "be7c66f3-a848-4c13-b8bd-7d3606293d8a",
+										"exec": [
+											"let response = JSON.parse(responseBody);",
+											"pm.environment.set(\"personId\",response);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstName\": \"Bikram\",\n\t\"lastName\": \"Kumar\",\n\t\"userName\": \"bikramk\",\n\t\"password\": \"asd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/persons",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"persons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Person by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/persons/{{personId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"persons",
+										"{{personId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Person",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstName\": \"Bikram\",\n\t\"middleName\": \"Singh\",\n\t\"lastName\": \"Kumar\",\n\t\"userName\": \"bikramk\",\n\t\"password\": \"asd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/persons/{{personId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"persons",
+										"{{personId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Person",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/persons/{{personId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"persons",
+										"{{personId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Groups",
+					"item": [
+						{
+							"name": "Get Groups",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/groups",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insert Group",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "be7c66f3-a848-4c13-b8bd-7d3606293d8a",
+										"exec": [
+											"let response = JSON.parse(responseBody);",
+											"pm.environment.set(\"groupId\",response);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Selling Group\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/groups",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Group by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/groups/{{groupId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"groups",
+										"{{groupId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Group",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"firstName\": \"Bikram\",\n\t\"middleName\": \"Singh\",\n\t\"lastName\": \"Kumar\",\n\t\"userName\": \"bikramk\",\n\t\"password\": \"asd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/groups/{{groupId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"groups",
+										"{{groupId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Person to Group",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/groups/{{groupId}}/persons/{{personId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"groups",
+										"{{groupId}}",
+										"persons",
+										"{{personId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Expense to Group",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{protocol}}://{{ip}}:{{port}}/groups/{{groupId}}/expenses/{{expenseId}}",
+									"protocol": "{{protocol}}",
+									"host": [
+										"{{ip}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"groups",
+										"{{groupId}}",
+										"expenses",
+										"{{expenseId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

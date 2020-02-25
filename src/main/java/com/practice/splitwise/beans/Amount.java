@@ -8,11 +8,7 @@ import java.io.Serializable;
 import java.util.Currency;
 import java.util.UUID;
 
-@Entity
 public class Amount implements Serializable {
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	private UUID id;
 	private double amount;
 	private Currency currency;
 
