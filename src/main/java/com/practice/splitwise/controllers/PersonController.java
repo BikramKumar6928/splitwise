@@ -61,8 +61,8 @@ public class PersonController {
 	}
 
 	@PutMapping("/{personId}/expenses/{expenseId}")
-	public Expense updateExpense(@PathVariable UUID personId, @PathVariable UUID expenseid, @RequestBody Expense expense){
-		return expenseService.updateExpenseForPerson(personId, expenseid,expense);
+	public Expense updateExpense(@PathVariable UUID personId, @PathVariable UUID expenseId, @RequestBody Expense expense){
+		return expenseService.updateExpenseForPerson(personId, expenseId,expense);
 	}
 
 	@DeleteMapping("/{personId}/expenses/{expenseId}")
