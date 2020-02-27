@@ -62,4 +62,10 @@ public class Group {
 	public void addMembers(Person person) {
 		personList.add(person);
 	}
+
+	public void removeExpense(Expense expense) {
+		expenseList = expenseList.parallelStream()
+				.filter(expenseOfList-> expenseOfList.getId() != expense.getId())
+				.collect(Collectors.toList());
+	}
 }

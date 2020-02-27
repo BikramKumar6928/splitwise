@@ -83,4 +83,11 @@ public class GroupService {
         group.addExpense(expense);
         return groupRepository.save(group);
     }
+
+    public Group removeExpenseFromGroup(UUID groupId, UUID expenseId) {
+        Expense expense = expenseService.getExpenseById(expenseId);
+        Group group = getGroupById(groupId);
+        group.removeExpense(expense);
+        return groupRepository.save(group);
+    }
 }

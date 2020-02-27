@@ -41,15 +41,23 @@ public class GroupController {
         groupService.deleteGroup(id);
     }
 
-    @PostMapping("/{groupId}/persons/{personId}")
+    @PostMapping("/{groupId}/persons/{personId}/add")
     public Group addPersonToGroup(@PathVariable UUID groupId, @PathVariable UUID personId){
         return groupService.addPersonToGroup(groupId,personId);
     }
 
-    @PostMapping("/{groupId}/expenses/{expenseId}")
+    @PostMapping("/{groupId}/persons/{personId}/remove")
+    public Group removePersonFromGroup(@PathVariable UUID groupId, @PathVariable UUID personId){
+        return groupService.removePersonFromGroup(groupId,personId);
+    }
+
+    @PostMapping("/{groupId}/expenses/{expenseId}/add")
     public Group addExpenseToGroup(@PathVariable UUID groupId, @PathVariable UUID expenseId){
         return groupService.addExpenseToGroup(groupId, expenseId);
     }
 
-
+    @PostMapping("/{groupId}/expenses/{expenseId}/remove")
+    public Group removeExpenseFromGroup(@PathVariable UUID groupId, @PathVariable UUID expenseId){
+        return groupService.removeExpenseFromGroup(groupId, expenseId);
+    }
 }
