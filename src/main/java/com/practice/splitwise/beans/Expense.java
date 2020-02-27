@@ -4,7 +4,6 @@ import com.practice.splitwise.beans.enums.Category;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +25,7 @@ public class Expense implements Serializable {
 	private Person addedBy;
 
 	@OneToMany(targetEntity=Expense.class)
-	private List<Expense> subExpenses;
+	private List<Expense> subExpenseList;
 
 	@OneToMany(targetEntity=Receipt.class)
 	private List<Receipt> receiptList;
@@ -37,21 +36,21 @@ public class Expense implements Serializable {
 	@OneToMany(targetEntity=Spender.class)
 	private List<Spender> beneficiaryList;
 
-	public  Expense (Date date, Person addedBy, Category category, Expense... subExpenses){
-		this(date,addedBy,category, Arrays.asList(subExpenses));
+	public  Expense (Date date, Person addedBy, Category category, Expense... subExpenseList){
+		this(date,addedBy,category, Arrays.asList(subExpenseList));
 	}
 
-	public  Expense (Person addedBy, Category category, Expense... subExpenses){
-		this(new Date(),addedBy,category, Arrays.asList(subExpenses));
+	public  Expense (Person addedBy, Category category, Expense... subExpenseList){
+		this(new Date(),addedBy,category, Arrays.asList(subExpenseList));
 	}
 
 	public Expense(){}
 
-	public Expense (Date date, Person addedBy, Category category, List<Expense> subExpenses){
+	public Expense (Date date, Person addedBy, Category category, List<Expense> subExpenseList){
 		this.date = date;
 		this.addedBy = addedBy;
 		this.category = category;
-		this.subExpenses = subExpenses;
+		this.subExpenseList = subExpenseList;
 		updateMembers();
 	}
 
@@ -60,7 +59,7 @@ public class Expense implements Serializable {
 			return;
 		}
 		isUpdated = true;
-		for (Expense expense : subExpenses) {
+		for (Expense expense : subExpenseList) {
 			amount.add(expense.getAmount());
 			spenderList.addAll(expense.getSpenderList());
 			beneficiaryList.addAll(expense.getBeneficiaryList());
@@ -107,12 +106,12 @@ public class Expense implements Serializable {
 		this.beneficiaryList = beneficiaryList;
 	}
 
-	public List<Expense> getSubExpenses() {
-		return subExpenses;
+	public List<Expense> getSubExpenseList() {
+		return subExpenseList;
 	}
 
-	public void setSubExpenses(List<Expense> subExpenses) {
-		this.subExpenses = subExpenses;
+	public void setSubExpenseList(List<Expense> subExpenseList) {
+		this.subExpenseList = subExpenseList;
 	}
 
 	public Person getAddedBy() {
