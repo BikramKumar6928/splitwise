@@ -17,9 +17,6 @@ public class PersonController {
 	@Autowired
 	private PersonService personService;
 
-	@Autowired
-	private ExpenseService expenseService;
-
 	@GetMapping
 	public List<Person> getPersons(){
 		return personService.getAllPersons();
@@ -45,28 +42,4 @@ public class PersonController {
 		personService.deletePerson(id);
 	}
 
-	@GetMapping("/{personId}/expenses")
-	public List<Expense> getExpenses(@PathVariable UUID personId){
-		return expenseService.getAllExpensesForPerson(personId);
-	}
-
-	@GetMapping("/{personId}/expenses/{expenseId}")
-	public Expense getExpenseById(@PathVariable("personId") UUID personId, @PathVariable("expenseId") UUID expenseId){
-		return expenseService.getExpenseByIdForPerson(personId, expenseId);
-	}
-
-	@PostMapping("/{personId}/expenses")
-	public UUID insertExpense(@PathVariable UUID personId, @RequestBody Expense expense){
-		return expenseService.insertExpenseForPerson(personId, expense);
-	}
-
-	@PutMapping("/{personId}/expenses/{expenseId}")
-	public Expense updateExpense(@PathVariable UUID personId, @PathVariable UUID expenseId, @RequestBody Expense expense){
-		return expenseService.updateExpenseForPerson(personId, expenseId,expense);
-	}
-
-	@DeleteMapping("/{personId}/expenses/{expenseId}")
-	public void deleteExpense(@PathVariable UUID personId, @PathVariable UUID expenseId){
-		expenseService.deleteExpenseForPerson(personId, expenseId);
-	}
 }

@@ -15,27 +15,27 @@ public class ExpenseController {
     private ExpenseService expenseService;
 
     @GetMapping
-    public List<Expense> getExpenses(){
-        return expenseService.getAllExpenses();
+    public List<Expense> getExpenses(@RequestHeader UUID personId){
+        return expenseService.getAllExpensesForPerson(personId);
     }
 
-    @GetMapping("/{id}")
-    public Expense getExpenseById(@PathVariable("id") UUID id){
-        return expenseService.getExpenseById(id);
+    @GetMapping("/{expenseId}")
+    public Expense getExpenseById(@RequestHeader UUID personId, @PathVariable UUID expenseId){
+        return expenseService.getExpenseByIdForPerson(personId, expenseId);
     }
 
     @PostMapping
-    public UUID insertExpense(@RequestBody Expense expense){
-        return expenseService.insertExpense(expense);
+    public UUID insertExpense(@RequestHeader UUID personId, @RequestBody Expense expense){
+        return expenseService.insertExpenseForPerson(personId, expense);
     }
 
-    @PutMapping("/{id}")
-    public Expense updateExpense(@PathVariable UUID id, @RequestBody Expense expense){
-        return expenseService.updateExpense(id,expense);
+    @PutMapping("/{expenseId}")
+    public Expense updateExpense(@RequestHeader UUID personId, @PathVariable UUID expenseId, @RequestBody Expense expense){
+        return expenseService.updateExpenseForPerson(personId, expenseId, expense);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteExpense(@PathVariable UUID id){
-        expenseService.deleteExpense(id);
+    @DeleteMapping("/{expenseId}")
+    public void deleteExpense(@RequestHeader UUID personId, @PathVariable UUID expenseId){
+        expenseService.deleteExpenseForPerson(personId, expenseId);
     }
 }
