@@ -1,6 +1,7 @@
 package com.practice.splitwise.services;
 
 import com.practice.splitwise.beans.Expense;
+import com.practice.splitwise.beans.Group;
 import com.practice.splitwise.beans.Person;
 import com.practice.splitwise.exceptions.ExpenseNotFoundException;
 import com.practice.splitwise.repositories.ExpenseRepository;
@@ -16,6 +17,7 @@ public class ExpenseService {
 
     private ExpenseRepository expenseRepository;
     private PersonService personService;
+    private GroupService groupService;
 
     @Autowired
     public ExpenseService(ExpenseRepository expenseRepository, PersonService personService){
@@ -74,5 +76,12 @@ public class ExpenseService {
         Person person = personService.getPersonById(personId);
         expense.setAddedBy(person);
         return expenseRepository.save(expense);
+    }
+
+    public UUID insertExpenseForPerson(UUID personId, UUID groupId, Expense expense) {
+        Group group = groupService.getGroupById(groupId);
+        Expense expenseWithAddedBy = insertExpenseForPersonGetObject(personId, expense);
+        group.addExpense(expenseWithAddedBy);
+        return expenseWithAddedBy.getId();
     }
 }
