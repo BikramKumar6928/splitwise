@@ -1,4 +1,4 @@
-# splitwise
+# Splitwise
 A REST based Transaction and Loan management system inspired from Splitwise
 
 # About
@@ -11,6 +11,7 @@ It is a standard maven project. Use the `install` goal to build the project.
 ```bash
 #Clone the repository.
 git clone https://github.com/BikramKumar6928/splitwise.git
+
 #Create the build files.
 mvn clean install
 
